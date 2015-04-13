@@ -52,10 +52,4 @@ RUN cd ..
 RUN wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
 RUN tar -xf tesseract-ocr-3.02.eng.tar.gz
 RUN sudo cp -r tesseract-ocr/tessdata /usr/local/share/
-
-# update working directories
-ADD ./flask_server /flask_server
-WORKDIR /flask_server
-
-EXPOSE 80
-CMD ["python", "app.py"]
+WORKDIR /code/
