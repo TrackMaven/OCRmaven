@@ -34,21 +34,10 @@ RUN ldconfig
 WORKDIR /
 RUN ls
 
+RUN apt-get install -y tesseract-ocr
+
 ADD requirements.txt /
 RUN pip install -r requirements.txt
 
-# build tesseract
-RUN wget https://github.com/tesseract-ocr/tesseract/archive/3.04.00.tar.gz
-RUN tar -zxvf 3.04.00.tar.gz
-WORKDIR tesseract-ocr/
-RUN ./autogen.sh
-RUN ./configure
-RUN make
-RUN make install
-RUN ldconfig
-RUN cd ..
-
-# download the relevant Tesseract English Language Packages
-RUN wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata
-RUN sudo cp tesseract-ocr/eng.traineddata /usr/local/share/
 WORKDIR /code/
+EXPOSE 5000

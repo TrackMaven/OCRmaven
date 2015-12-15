@@ -56,3 +56,4 @@ target/
 # Other
 flask_server_old
 blog.md
+.DS_Store

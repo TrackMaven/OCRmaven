@@ -1,8 +1,7 @@
-import pytesseract
 import requests
-from PIL import Image
-from PIL import ImageFilter
+from PIL import Image, ImageFilter
 from StringIO import StringIO
+import pytesseract
 
 
 def process_image(url):
