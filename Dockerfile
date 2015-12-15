@@ -38,8 +38,8 @@ ADD requirements.txt /
 RUN pip install -r requirements.txt
 
 # build tesseract
-RUN wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz
-RUN tar -zxvf tesseract-ocr-3.02.02.tar.gz
+RUN wget https://github.com/tesseract-ocr/tesseract/archive/3.04.00.tar.gz
+RUN tar -zxvf 3.04.00.tar.gz
 WORKDIR tesseract-ocr/
 RUN ./autogen.sh
 RUN ./configure
@@ -49,7 +49,6 @@ RUN ldconfig
 RUN cd ..
 
 # download the relevant Tesseract English Language Packages
-RUN wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
-RUN tar -xf tesseract-ocr-3.02.eng.tar.gz
-RUN sudo cp -r tesseract-ocr/tessdata /usr/local/share/
+RUN wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata
+RUN sudo cp tesseract-ocr/eng.traineddata /usr/local/share/
 WORKDIR /code/
